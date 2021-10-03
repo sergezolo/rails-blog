@@ -1,0 +1,19 @@
+<div class="card card-body bg-light" style="margin: 20px auto">
+    <h2><%= @post.title %></h2>
+    <p><%= @post.body %></p>
+    <div style="display: inline-block">
+        <%= link_to "Edit", edit_post_path(@post), :class => "btn btn-primary", :style => 'width: 49%' %>
+        <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, :class => "btn btn-danger", :style => 'width: 49%' %>
+    </div>
+</div>
+
+<div class="card card-body bg-light" style="margin: 0 auto">
+    <% if @post.comments.size != 0 %>
+        <h3>Comments:</h3>
+        <%= render 'comments/comments' %>
+        <br/>
+    <% end %>
+
+    <h3>Add a Comment: </h3>
+    <%= render 'comments/form' %>
+</div>

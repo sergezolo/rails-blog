@@ -1,0 +1,19 @@
+<style>
+    #delete-btn {
+        color: red;
+        text-decoration: none;
+        font-size: 20px;
+        position: absolute;
+        transform: translate(50%, -10%);
+    }
+</style>
+
+<% @post.comments.each do |comment| %>
+     <div class="card card-body bg-light" style="width: 100%; margin: 5px auto; background: white !important; position: relative;">
+    <p style="margin: 0;">
+    <b><%= comment.username %>:</b> 
+    <%= comment.body%> 
+    <%= link_to '⨯', [comment.post, comment], method: :delete, data: {confirm: 'Are you sure?'}, id: "delete-btn" %> 
+    </p>
+    </div>
+<% end %>
